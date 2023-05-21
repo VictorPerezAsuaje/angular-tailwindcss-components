@@ -1,0 +1,33 @@
+<div class="flex items-center justify-between">
+    <select id="pageSize" class="block px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 mr-3 focus:ring-indigo-500 focus:border-indigo-500" (change)="onPageSizeChangeHandler($event)">
+      <option [value]="pageSize" *ngFor="let pageSize of pagination?.availablePageSizes" [selected]="pageSize == pagination.pageSize">{{ pageSize }}</option>        
+    </select>
+
+    <ul class="flex">
+      <li *ngFor="let page of paginationItems">   
+        <button type="button" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 select-none" 
+        *ngIf="(page.type !== 'dots' && convertToNumber(page.value)  === 1) && selectedPage !== 0"
+        (click)="onPreviousClickedHandler(selectedPage - 1)">Previous</button>
+
+        <button type="button" class="px-3 py-2 leading-tight bg-white text-indigo-600 transition-all hover:bg-indigo-600 hover:text-white" 
+        *ngIf="page.type === 'firstNumbers'" 
+        (click)="onPageClickedHandler(page.value)">{{ page.value }}</button> 
+
+        <button type="button" class="px-3 py-2 leading-tight bg-indigo-600 text-white mx-2" 
+        *ngIf="page.type === 'standard'" 
+        (click)="onPageClickedHandler(page.value)">{{ page.value }}</button> 
+
+        <button type="button" class="px-3 py-2 leading-tight bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all mx-2" 
+        *ngIf="page.type === 'lastNumbers'" 
+        (click)="onPageClickedHandler(page.value)">{{ page.value }}</button> 
+
+        <div type="button" class="px-3 py-2 leading-tight bg-white text-indigo-600 mx-2" 
+        *ngIf="page.type === 'dots'">{{ page.value }}</div> 
+
+        <button type="button" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700" 
+        *ngIf="page.type === 'lastNumbers' && selectedPage !== lastPage"
+        (click)="onNextClickedHandler(selectedPage + 1)">Next</button>
+      </li>    
+
+    </ul>
+  </div>

@@ -1,0 +1,33 @@
+<div class="overflow-x-auto"> 
+    <atc-pagination [pagination]="tablePagination" 
+        (onPageSizeChange)="onPageSizeChange($event)" 
+        (onPageClicked)="onPageClicked($event)"
+        (onNextClicked)="onNextClicked()"
+        (onPreviousClicked)="onPreviousClicked()"
+    ></atc-pagination>
+
+    <table class="w-full text-sm text-left text-gray-500 mt-10">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr>
+            <ng-container *ngFor="let column of columns">
+                <th scope="col" class="px-6 py-3">
+                    <i class='{{ column.iconCssClass }}' *ngIf="column.hasIcon"></i>
+                    <button (click)="changeOrder(column.fieldName)">
+                        {{ column.headerName ?? (column.fieldName | capitalizeAndSeparate) }}
+                        <i class="fa-solid fa-caret-{{ sortDirection ? 'up' : 'down' }} ml-4" 
+                        *ngIf="column.fieldName == sortKey"></i>
+                    </button>
+                    
+                </th>
+            </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white border-b" *ngFor="let row of rows">
+              <td class="px-6 py-4" *ngFor="let column of columns">
+                  {{ getPropertyValue(row, column.fieldName) }}                 
+              </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
