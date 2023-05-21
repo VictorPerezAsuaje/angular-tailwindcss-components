@@ -32,6 +32,13 @@ import { TablesComponent } from './library/data-display/tables/tables.component'
 import { PaginationComponent } from './library/navigation/pagination/pagination.component';
 import { ColumnComponent } from './library/data-display/tables/column/column.component';
 import { CapitalizeAndSeparatePipe } from './pipes/CapitalizeAndSeparatePipe.pipe';
+import { HomeComponent } from './features/home/home.component';
+import { DataDisplayComponent } from './features/data-display/data-display.component';
+import { FeedbackComponent } from './features/feedback/feedback.component';
+import { FormsComponent } from './features/forms/forms.component';
+import { LayoutComponent } from './features/layout/layout.component';
+import { NavigationComponent } from './features/navigation/navigation.component';
+import { SurfacesComponent } from './features/surfaces/surfaces.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +71,14 @@ import { CapitalizeAndSeparatePipe } from './pipes/CapitalizeAndSeparatePipe.pip
     TablesComponent,
     PaginationComponent,
     ColumnComponent,
-    CapitalizeAndSeparatePipe
+    CapitalizeAndSeparatePipe,
+    HomeComponent,
+    DataDisplayComponent,
+    FeedbackComponent,
+    FormsComponent,
+    LayoutComponent,
+    NavigationComponent,
+    SurfacesComponent
   ],
   imports: [
     BrowserModule,
